@@ -4,10 +4,8 @@
 require 'simplecov'
 SimpleCov.start
 
-if ENV['CODECOV_TOKEN']
-  require 'codecov'
-  SimpleCov.formatter = SimpleCov::Formatter::Codecov
-end
+require 'codecov'
+SimpleCov.formatter = SimpleCov::Formatter::Codecov
 
 require 'porridge'
 
