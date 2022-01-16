@@ -10,7 +10,7 @@ module Porridge
       super()
     end
 
-    # Extracts the value from the given object by sending the method name ({#method}) to it.
+    # Extracts the value from the given object by sending the method name ({#method_name}) to it.
     # @param object the object from which to retrieve the value.
     # @param _options [Hash] a hash of "options," which may be application-specific. These options are ignored.
     # @return the extracted value, as returned from the sent method.
