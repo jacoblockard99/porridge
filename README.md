@@ -1,5 +1,6 @@
 # Porridge
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/9c3a8a230097bac612e3/maintainability)](https://codeclimate.com/github/jacoblockard99/porridge/maintainability)
 [![codecov](https://codecov.io/gh/jacoblockard99/porridge/branch/master/graph/badge.svg?token=V9GxyepasN)](https://codecov.io/gh/jacoblockard99/porridge)
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/porridge`. To experiment with that code, run `bin/console` for an interactive prompt.
