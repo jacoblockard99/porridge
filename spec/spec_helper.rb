@@ -1,5 +1,14 @@
 # frozen_string_literal: true
 
+# Initialize SimpleCov, with CodeCov formatting
+require 'simplecov'
+SimpleCov.start
+
+if ENV['CODECOV_TOKEN']
+  require 'codecov'
+  SimpleCov.formatter = SimpleCov::Formatter::Codecov
+end
+
 require 'porridge'
 
 RSpec.configure do |config|

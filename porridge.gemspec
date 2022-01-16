@@ -32,10 +32,12 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_development_dependency 'byebug', '~> 11.1'
+  spec.add_development_dependency 'codecov', '~> 0.6'
   spec.add_development_dependency 'rspec', '~> 4.0'
   spec.add_development_dependency 'rubocop', '~> 1.24'
   spec.add_development_dependency 'rubocop-rake', '~> 0.6'
   spec.add_development_dependency 'rubocop-rspec', '~> 2.7'
+  spec.add_development_dependency 'simplecov', '~> 0.21'
 
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"
