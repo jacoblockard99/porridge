@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Porridge
   # {Extractor} is the nominal base class for all porridge value extractors.
   #
