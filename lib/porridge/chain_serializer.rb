@@ -6,6 +6,7 @@ module Porridge
   class ChainSerializer < Serializer
     # Creates a new instance of {ChainSerializer} with the given serializers to chain.
     # @param serializers [Array] the splatted array of serializers to chain.
+    # @raise [InvalidSerializerError] if any of the given serializers are not valid serializers.
     def initialize(*serializers)
       super()
       Serializer.ensure_valid!(*serializers)
