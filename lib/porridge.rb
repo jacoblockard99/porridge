@@ -9,5 +9,6 @@ require_relative 'porridge/array_serializer'
 require_relative 'porridge/key_normalizing_serializer'
 require_relative 'porridge/error'
 require_relative 'porridge/invalid_serializer_error'
+require_relative 'porridge/invalid_extractor_error'
 
 module Porridge; end
