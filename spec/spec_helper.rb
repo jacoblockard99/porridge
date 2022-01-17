@@ -12,6 +12,7 @@ end
 require 'porridge'
 
 require_relative 'support/shared_examples/method_requiring_valid_serializer'
+require_relative 'support/shared_examples/method_requiring_valid_extractor'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

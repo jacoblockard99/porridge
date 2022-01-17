@@ -12,8 +12,8 @@ end
 
 describe Porridge::ArraySerializer do
   describe '.new' do
-    def execute(...)
-      described_class.new(...)
+    def execute(serializer:)
+      described_class.new(serializer)
     end
 
     it_behaves_like 'a method requiring a valid serializer'

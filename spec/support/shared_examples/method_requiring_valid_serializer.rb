@@ -5,7 +5,7 @@ require 'spec_helper'
 shared_examples_for 'a method requiring a valid serializer' do
   context 'with a valid serializer' do
     def _execute
-      execute(Porridge::Serializer.new)
+      execute(serializer: Porridge::Serializer.new)
     end
 
     it 'raises no error' do
@@ -15,7 +15,7 @@ shared_examples_for 'a method requiring a valid serializer' do
 
   context 'with an invalid serializer' do
     def _execute
-      execute(Object.new)
+      execute(serializer: Object.new)
     end
 
     it 'raises an appropriate error' do
@@ -25,7 +25,7 @@ shared_examples_for 'a method requiring a valid serializer' do
 
   context 'with a nil serializer' do
     def _execute
-      execute(nil)
+      execute(serializer: nil)
     end
 
     it 'raises an appropriate error' do
