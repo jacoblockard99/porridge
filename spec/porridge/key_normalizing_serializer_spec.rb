@@ -18,19 +18,7 @@ describe Porridge::KeyNormalizingSerializer do
       end
 
       context 'with string key type' do
-        let(:instance) do
-          described_class.new(
-            proc {
-              {
-                trust: 'in',
-                the: 'Lord',
-                'your' => 'God'
-              }
-            },
-            key_type: :string
-          )
-          create_instance(:string)
-        end
+        let(:instance) { create_instance(:string) }
         let(:result) { instance.call(Object.new, Object.new, {}) }
 
         it 'stringifies the keys' do
@@ -53,6 +41,42 @@ describe Porridge::KeyNormalizingSerializer do
             your: 'God'
           })
         end
+      end
+    end
+
+    context 'with deep hash' do
+      let(:instance) do
+        described_class.new(
+          proc {
+            {
+              trust: {
+                'in' => 'the',
+                Lord: 'your'
+              },
+              God: 'with',
+              all: {
+                'your' => 'mind'
+              }
+            }
+          },
+          key_type: :string
+        )
+      end
+      let(:result) { instance.call(Object.new, Object.new, {}) }
+
+      it 'normalizes all the keys' do
+        expect(result).to eq(
+          {
+            'trust' => {
+              'in' => 'the',
+              'Lord'=> 'your'
+            },
+            'God' => 'with',
+            'all' => {
+              'your' => 'mind'
+            }
+          }
+        )
       end
     end
   end
