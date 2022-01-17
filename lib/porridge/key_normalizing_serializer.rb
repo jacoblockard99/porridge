@@ -37,14 +37,7 @@ module Porridge
     # @param hash [Hash] the hash to normalize.
     # @return [Hash] the normalized hash.
     def normalize_keys(hash)
-      case key_type
-      when :string
-        hash.deep_stringify_keys
-      when :symbol
-        hash.deep_symbolize_keys
-      else
-        input
-      end
+      key_type == :symbol ? hash.deep_symbolize_keys : hash.deep_stringify_keys
     end
 
     # The base serializer whose output hash will be normalized
