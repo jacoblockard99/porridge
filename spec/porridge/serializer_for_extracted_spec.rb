@@ -17,7 +17,7 @@ describe Porridge::SerializerForExtracted do
     let(:extractor) { proc { |obj| obj[:value] } }
     let(:serializer) { proc { |obj| obj } }
     let(:instance) { described_class.new(serializer, extractor: extractor) }
-    let(:result) { instance.call({value: 'a random value'}, Object.new, {}) }
+    let(:result) { instance.call({ value: 'a random value' }, Object.new, {}) }
 
     it "extracts the value and passes that as the serializer's object" do
       expect(result).to eq 'a random value'
