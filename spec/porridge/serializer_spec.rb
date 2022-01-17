@@ -66,4 +66,10 @@ describe Porridge::Serializer do
       end
     end
   end
+
+  describe '#call' do
+    it 'returns the input' do
+      expect(described_class.new.call(Object.new, 'input', {})).to eq 'input'
+    end
+  end
 end
