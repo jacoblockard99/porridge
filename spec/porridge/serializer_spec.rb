@@ -13,7 +13,7 @@ describe Porridge::Serializer do
     end
 
     context 'when given a proc' do
-      let(:result) { described_class.valid?(proc {} ) }
+      let(:result) { described_class.valid?(proc {}) }
 
       it 'returns true' do
         expect(result).to eq true
@@ -31,7 +31,7 @@ describe Porridge::Serializer do
 
   describe '.ensure_valid!' do
     context 'when given all valid serializers' do
-      let(:result) { described_class.ensure_valid!(Porridge::Serializer.new, proc {}, Porridge::Serializer.new) }
+      let(:result) { described_class.ensure_valid!(described_class.new, proc {}, described_class.new) }
 
       it 'returns true' do
         expect(result).to eq true

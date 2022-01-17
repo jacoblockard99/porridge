@@ -28,15 +28,15 @@ describe Porridge::ChainSerializer do
   describe '#call' do
     let(:instance) do
       described_class.new(
-        proc do |obj, input, opts|
+        proc do |_obj, input, _opts|
           input[:one] = 1
           input
         end,
-        proc do |obj, input, opts|
+        proc do |obj, input, _opts|
           input[:dynamic] = obj[:field]
           input
         end,
-        proc do |obj, input, opts|
+        proc do |_obj, input, opts|
           input[:opt] = opts[:opt]
           input
         end
