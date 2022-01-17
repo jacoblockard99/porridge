@@ -22,6 +22,15 @@ module Porridge
       object.respond_to? :call
     end
 
+    # Ensures that all the provided objects are valid serializers, raising {InvalidSerializerError} if not.
+    # @param objects [Array] the splatted array of objects to validate.
+    # @return [Boolean] +true+ if all the objects were valid; raises an error otherwise.
+    # @raise [InvalidSerializerError] if any of the provided objects are not valid serializers.
+    def self.ensure_valid!(*objects)
+      objects.each { |object| raise InvalidSerializerError unless valid?(object) }
+      true
+    end
+
     # Should transforms the given input for the given object with the given options and return the desired output.
     # @param _object the object for which to transform the input.
     # @param input the object being transformed, typically either a hash or an array.

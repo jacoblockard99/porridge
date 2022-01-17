@@ -28,4 +28,42 @@ describe Porridge::Serializer do
       end
     end
   end
+
+  describe '.ensure_valid!' do
+    context 'when given all valid serializers' do
+      let(:result) { described_class.ensure_valid!(Porridge::Serializer.new, proc {}, Porridge::Serializer.new) }
+
+      it 'returns true' do
+        expect(result).to eq true
+      end
+    end
+
+    context 'when given no serializers' do
+      let(:result) { described_class.ensure_valid! }
+
+      it 'returns true' do
+        expect(result).to eq true
+      end
+    end
+
+    context 'when given a single, invalid serializer' do
+      def execute
+        described_class.ensure_valid!(Object.new)
+      end
+
+      it 'raises an appropriate error' do
+        expect { execute }.to raise_error Porridge::InvalidSerializerError
+      end
+    end
+
+    context 'when given multiple serializers, some valid, some invalid' do
+      def execute
+        described_class.ensure_valid!(proc {}, Porridge::Serializer.new, Object.new)
+      end
+
+      it 'raises an appropriate error' do
+        expect { execute }.to raise_error Porridge::InvalidSerializerError
+      end
+    end
+  end
 end
