@@ -1,1 +1,1 @@
---private --protected **/*.rb - README.md
+--private --protected lib/**/*.rb - README.md
