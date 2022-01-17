@@ -5,7 +5,7 @@ module Porridge
   # first one as the input of the second, and the output of the second as the input of the third, and so on.
   class ChainSerializer < Serializer
     # Creates a new instance of {ChainSerializer} with the given serializers to chain.
-    # @param serializers [Array] the splatted array of serializers to chain.
+    # @param serializers [Array<Serializer,#call>] the splatted array of serializers to chain.
     # @raise [InvalidSerializerError] if any of the given serializers are not valid serializers.
     def initialize(*serializers)
       super()
@@ -35,7 +35,7 @@ module Porridge
     private
 
     # The array of chained serializers.
-    # @return [Array]
+    # @return [Array<Serializer, #call>]
     attr_reader :serializers
   end
 end
