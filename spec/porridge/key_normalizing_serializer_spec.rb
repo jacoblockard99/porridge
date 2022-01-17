@@ -69,7 +69,7 @@ describe Porridge::KeyNormalizingSerializer do
           {
             'trust' => {
               'in' => 'the',
-              'Lord'=> 'your'
+              'Lord' => 'your'
             },
             'God' => 'with',
             'all' => {
