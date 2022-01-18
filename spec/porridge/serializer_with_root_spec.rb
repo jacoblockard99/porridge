@@ -98,7 +98,6 @@ describe Porridge::SerializerWithRoot do
 
         it_behaves_like 'a valid result', %w[object object]
       end
-
     end
 
     context 'with implicit root key' do
