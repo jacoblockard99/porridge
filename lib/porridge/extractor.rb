@@ -15,6 +15,15 @@ module Porridge
       object.respond_to? :call
     end
 
+    # Ensures that all the provided objects are valid extractors, raising {InvalidExtractorError} if not.
+    # @param objects [Array] the splatted array of objects to validate.
+    # @return [Boolean] +true+ if all the objects were valid; raises an error otherwise.
+    # @raise [InvalidExtractorError] if any of the provided objects are not valid extractors.
+    def self.ensure_valid!(*objects)
+      objects.each { |object| raise InvalidExtractorError unless valid?(object) }
+      true
+    end
+
     # Should extract a value from the given object with the given options. Subclasses should override this method.
     # @param object the object from which to retrieve the value.
     # @param options [Hash] a hash of "options," which may be application-specific.

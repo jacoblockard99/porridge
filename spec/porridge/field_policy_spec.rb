@@ -2,9 +2,9 @@
 
 require 'spec_helper'
 
-describe Porridge::Extractor do
+describe Porridge::FieldPolicy do
   describe '.valid?' do
-    context 'when given an object not implementing #call' do
+    context 'when given an object not implementing #allowed?' do
       let(:result) { described_class.valid?(Object.new) }
 
       it 'returns false' do
@@ -15,12 +15,12 @@ describe Porridge::Extractor do
     context 'when given a proc' do
       let(:result) { described_class.valid?(proc {}) }
 
-      it 'returns true' do
-        expect(result).to eq true
+      it 'returns false' do
+        expect(result).to eq false
       end
     end
 
-    context 'when given an Extractor' do
+    context 'when given a FieldPolicy' do
       let(:result) { described_class.valid?(described_class.new) }
 
       it 'returns true' do
@@ -30,15 +30,15 @@ describe Porridge::Extractor do
   end
 
   describe '.ensure_valid!' do
-    context 'when given all valid extractors' do
-      let(:result) { described_class.ensure_valid!(described_class.new, proc {}, described_class.new) }
+    context 'when given all valid field policies' do
+      let(:result) { described_class.ensure_valid!(described_class.new, described_class.new) }
 
       it 'returns true' do
         expect(result).to eq true
       end
     end
 
-    context 'when given no extractors' do
+    context 'when given no field policies' do
       let(:result) { described_class.ensure_valid! }
 
       it 'returns true' do
@@ -46,23 +46,23 @@ describe Porridge::Extractor do
       end
     end
 
-    context 'when given a single, invalid extractor' do
+    context 'when given a single, invalid field policy' do
       def execute
         described_class.ensure_valid!(Object.new)
       end
 
       it 'raises an appropriate error' do
-        expect { execute }.to raise_error Porridge::InvalidExtractorError
+        expect { execute }.to raise_error Porridge::InvalidFieldPolicyError
       end
     end
 
-    context 'when given multiple extractors, some valid, some invalid' do
+    context 'when given multiple field policies, some valid, some invalid' do
       def execute
-        described_class.ensure_valid!(proc {}, described_class.new, Object.new)
+        described_class.ensure_valid!(described_class.new, described_class.new, Object.new)
       end
 
       it 'raises an appropriate error' do
-        expect { execute }.to raise_error Porridge::InvalidExtractorError
+        expect { execute }.to raise_error Porridge::InvalidFieldPolicyError
       end
     end
   end
