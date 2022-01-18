@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-class SomeRandomClass; end
+SomeRandomClass = Class.new
 
 class OverridenSerializerWithRoot < Porridge::SerializerWithRoot
   protected

@@ -16,4 +16,5 @@ require_relative 'porridge/invalid_field_policy_error'
 require_relative 'porridge/field_policy'
 require_relative 'porridge/field_serializer'
 
+# {Porridge} is the root namespace for all classes in the +porridge+ gem.
 module Porridge; end
