@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Porridge::Extractor do
+describe Porridge::Serializer do
   describe '.valid?' do
     context 'when given an object not implementing #call' do
       let(:result) { described_class.valid?(Object.new) }
@@ -20,7 +20,7 @@ describe Porridge::Extractor do
       end
     end
 
-    context 'when given an Extractor' do
+    context 'when given a Serializer' do
       let(:result) { described_class.valid?(described_class.new) }
 
       it 'returns true' do
@@ -30,7 +30,7 @@ describe Porridge::Extractor do
   end
 
   describe '.ensure_valid!' do
-    context 'when given all valid extractors' do
+    context 'when given all valid serializers' do
       let(:result) { described_class.ensure_valid!(described_class.new, proc {}, described_class.new) }
 
       it 'returns true' do
@@ -38,7 +38,7 @@ describe Porridge::Extractor do
       end
     end
 
-    context 'when given no extractors' do
+    context 'when given no serializers' do
       let(:result) { described_class.ensure_valid! }
 
       it 'returns true' do
@@ -46,24 +46,30 @@ describe Porridge::Extractor do
       end
     end
 
-    context 'when given a single, invalid extractor' do
+    context 'when given a single, invalid serializer' do
       def execute
         described_class.ensure_valid!(Object.new)
       end
 
       it 'raises an appropriate error' do
-        expect { execute }.to raise_error Porridge::InvalidExtractorError
+        expect { execute }.to raise_error Porridge::InvalidSerializerError
       end
     end
 
-    context 'when given multiple extractors, some valid, some invalid' do
+    context 'when given multiple serializers, some valid, some invalid' do
       def execute
-        described_class.ensure_valid!(proc {}, described_class.new, Object.new)
+        described_class.ensure_valid!(proc {}, Porridge::Serializer.new, Object.new)
       end
 
       it 'raises an appropriate error' do
-        expect { execute }.to raise_error Porridge::InvalidExtractorError
+        expect { execute }.to raise_error Porridge::InvalidSerializerError
       end
+    end
+  end
+
+  describe '#call' do
+    it 'returns the input' do
+      expect(described_class.new.call(Object.new, 'input', {})).to eq 'input'
     end
   end
 end
