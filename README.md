@@ -1,5 +1,6 @@
 # Porridge
-
+[![Gem Version](https://badge.fury.io/rb/porridge.svg)](https://badge.fury.io/rb/porridge)
+![Build](https://github.com/<OWNER>/<REPOSITORY>/actions/workflows/build.yml/badge.svg)
 [![Maintainability](https://api.codeclimate.com/v1/badges/9c3a8a230097bac612e3/maintainability)](https://codeclimate.com/github/jacoblockard99/porridge/maintainability)
 [![codecov](https://codecov.io/gh/jacoblockard99/porridge/branch/master/graph/badge.svg?token=V9GxyepasN)](https://codecov.io/gh/jacoblockard99/porridge)
 
