@@ -12,5 +12,8 @@ require_relative 'porridge/serializer_with_root'
 require_relative 'porridge/error'
 require_relative 'porridge/invalid_serializer_error'
 require_relative 'porridge/invalid_extractor_error'
+require_relative 'porridge/invalid_field_policy_error'
+require_relative 'porridge/field_policy'
+require_relative 'porridge/field_serializer'
 
 module Porridge; end
