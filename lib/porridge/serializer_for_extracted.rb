@@ -10,7 +10,7 @@ module Porridge
     #   to the base serializer.
     # @raise [InvalidSerializerError] if the provided base serializer is not a valid serializer.
     # @raise [InvalidExtractorError] if the provided extractor is not a valid extractor.
-    def initialize(base, extractor:)
+    def initialize(base, extractor)
       Serializer.ensure_valid!(base)
       Extractor.ensure_valid!(extractor)
       @base = base
