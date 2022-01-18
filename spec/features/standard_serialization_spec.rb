@@ -161,7 +161,8 @@ describe 'standard serialization scenarios' do
         gender: true,
         buildings: {
           location: true,
-          city: true
+          city: true,
+          type: true
         }
       })
     end
@@ -178,7 +179,8 @@ describe 'standard serialization scenarios' do
             'buildings' => [
               {
                 'location' => 'At the Cross',
-                'city' => 'Harrisonburg, United States'
+                'city' => 'Harrisonburg, United States',
+                'type' => 'good'
               }
             ]
           },
@@ -188,7 +190,8 @@ describe 'standard serialization scenarios' do
             'buildings' => [
               {
                 'location' => 'The Desk',
-                'city' => 'Virginia Beach, United States'
+                'city' => 'Virginia Beach, United States',
+                'type' => 'good'
               }
             ]
           }
