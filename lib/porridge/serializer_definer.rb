@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'active_support'
+require 'active_support/core_ext/module/delegation'
+
 module Porridge
   # {SerializerDefiner} is a class that wraps a {Factory} and allows serializes to be easily defined with an elegant
   # DSL.
