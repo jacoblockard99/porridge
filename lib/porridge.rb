@@ -17,6 +17,9 @@ require_relative 'porridge/field_policy'
 require_relative 'porridge/field_serializer'
 require_relative 'porridge/serializing_extractor'
 require_relative 'porridge/whitelist_field_policy'
+require_relative 'porridge/factory'
+require_relative 'porridge/serializer_definer'
+require_relative 'porridge/serializer_definition'
 
 # {Porridge} is the root namespace for all classes in the +porridge+ gem.
 module Porridge; end
