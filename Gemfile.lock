@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    porridge (0.2.1)
+    porridge (0.2.2)
       activesupport (~> 6.0)
 
 GEM

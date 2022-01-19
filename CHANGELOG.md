@@ -4,6 +4,12 @@
 
 ### Changed
 
+- Bumped required `activesupport` version to 6.0.x.
+
+## [0.2.1] - 2022-01-19
+
+### Changed
+
 - Bumped required `activesupport` version to 7.0.x.
 
 ## [0.2.0] - 2022-01-19
