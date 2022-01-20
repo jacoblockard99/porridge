@@ -23,6 +23,16 @@ describe Porridge::ChainSerializer do
         expect { execute }.to raise_error Porridge::InvalidSerializerError
       end
     end
+
+    context 'when given no serializers' do
+      def execute
+        described_class.new
+      end
+
+      it 'does not raise an error' do
+        expect { execute }.not_to raise_error
+      end
+    end
   end
 
   describe '#call' do
@@ -53,6 +63,15 @@ describe Porridge::ChainSerializer do
           dynamic: 'love',
           opt: 'Lord'
         })
+      end
+    end
+
+    context 'on a chain serializer with no serializers' do
+      let(:instance) { described_class.new }
+      let(:result) { instance.call(Object.new, 'input', {}) }
+
+      it 'returns the unchanged input' do
+        expect(result).to eq 'input'
       end
     end
   end
