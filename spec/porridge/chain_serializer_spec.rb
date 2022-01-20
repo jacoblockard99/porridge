@@ -66,7 +66,7 @@ describe Porridge::ChainSerializer do
       end
     end
 
-    context 'on a chain serializer with no serializers' do
+    context 'with a chain serializer with no serializers' do
       let(:instance) { described_class.new }
       let(:result) { instance.call(Object.new, 'input', {}) }
 
