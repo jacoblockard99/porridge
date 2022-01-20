@@ -4,7 +4,7 @@
 
 - Fixed bug where method alises in `Factory` were not respecting an overriden "source" method.
 
-## [0.2.1] - 2022-01-19
+## [0.2.2] - 2022-01-19
 
 ### Changed
 
@@ -18,7 +18,7 @@
 
 ## [0.2.0] - 2022-01-19
 
-This is the initial functional release of the gem. Extractors, serializers, fields, field policies, and an elegant DSL over top were implemented added.
+This is the initial functional release of the gem. Extractors, serializers, fields, field policies, and an elegant DSL over top were implemented.
 
 ## [0.1.0] - 2022-01-16
 
