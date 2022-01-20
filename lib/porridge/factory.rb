@@ -82,6 +82,10 @@ module Porridge
       field_serializer(name, extractor)
     end
 
+    def attributes_field_serializer(*names)
+      serializers(*names.map { |name| attribute_field_serializer(name) })
+    end
+
     def association_field_serializer(name, options = {}, &block)
       options[:extraction_name] ||= name
       field_serializer(name, association_extractor(**options, &block))
