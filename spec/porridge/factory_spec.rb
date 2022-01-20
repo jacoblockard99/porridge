@@ -304,6 +304,29 @@ describe Porridge::Factory do
       end
     end
 
+    describe '#attributes_field_serializer' do
+      context 'when given no names' do
+        let(:result) { instance.attributes_field_serializer }
+
+        it 'returns a serializer that does nothing' do
+          expect(result.call(Object.new, 'input', {})).to eq 'input'
+        end
+      end
+
+      context 'when given names' do
+        let(:result) { instance.attributes_field_serializer(:name, :email, :id) }
+        let(:object) { Struct.new(:name, :email, :id).new('Jacob', 'example@example.com', 123) }
+
+        it 'returns a serializer that adds all the provided fields' do
+          expect(result.call(object, {}, field_policy: Porridge::FieldPolicy.new)).to eq({
+            name: 'Jacob',
+            email: 'example@example.com',
+            id: 123
+          })
+        end
+      end
+    end
+
     shared_examples_for '#association_field_serializer' do
       context 'when given only a name and a serializer' do
         let(:serializer) { proc { |obj| obj } }

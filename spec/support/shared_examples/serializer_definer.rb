@@ -23,6 +23,7 @@ shared_examples_for 'SerializerDefiner' do
       expect(instance).to respond_to(:create_serializer_for_extracted)
       expect(instance).to respond_to(:create_field_serializer)
       expect(instance).to respond_to(:create_attribute_field_serializer)
+      expect(instance).to respond_to(:create_attributes_field_serializer)
       expect(instance).to respond_to(:create_association_field_serializer)
       expect(instance).to respond_to(:create_belongs_to_field_serializer)
       expect(instance).to respond_to(:create_has_many_field_serializer)
@@ -47,6 +48,7 @@ shared_examples_for 'SerializerDefiner' do
       expect(instance).to respond_to(:for_extracted)
       expect(instance).to respond_to(:field)
       expect(instance).to respond_to(:attribute_field)
+      expect(instance).to respond_to(:attributes_field)
       expect(instance).to respond_to(:association_field)
       expect(instance).to respond_to(:belongs_to_field)
       expect(instance).to respond_to(:has_many_field)
@@ -77,6 +79,7 @@ shared_examples_for 'SerializerDefiner' do
   describe 'field methods' do
     it 'responds to all *_field methods defined in Factory', :aggregate_failures do
       expect(instance).to respond_to(:attribute)
+      expect(instance).to respond_to(:attributes)
       expect(instance).to respond_to(:association)
       expect(instance).to respond_to(:belongs_to)
       expect(instance).to respond_to(:has_many)
