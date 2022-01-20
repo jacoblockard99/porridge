@@ -13,6 +13,7 @@ shared_examples_for 'SerializerDefiner' do
     it 'responds to the same ones as Factory', :aggregate_failures do
       expect(instance).to respond_to(:create_from_name_extractor)
       expect(instance).to respond_to(:create_custom_extractor)
+      expect(instance).to respond_to(:create_attribute_extractor)
       expect(instance).to respond_to(:create_association_extractor)
       expect(instance).to respond_to(:create_belongs_to_extractor)
       expect(instance).to respond_to(:create_has_many_extractor)
@@ -57,6 +58,7 @@ shared_examples_for 'SerializerDefiner' do
     it 'does not respond to non-serializer methods defined in Factory', :aggregate_failures do
       expect(instance).not_to respond_to(:from_name_extractor)
       expect(instance).not_to respond_to(:custom_extractor)
+      expect(instance).not_to respond_to(:attribute_extractor)
       expect(instance).not_to respond_to(:association_extractor)
       expect(instance).not_to respond_to(:belongs_to_extractor)
       expect(instance).not_to respond_to(:has_many_extractor)

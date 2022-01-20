@@ -35,9 +35,13 @@ module Porridge
       extractor callback
     end
 
+    def attribute_extractor(name: nil, callback: nil, &block)
+      custom_extractor(callback || block) || from_name_extractor(name)
+    end
+
     def association_extractor(serializer:, extractor: nil, extraction_name: nil, callback: nil, &block)
       extractor SerializingExtractor.new(
-        extractor || custom_extractor(callback) || custom_extractor(block) || from_name_extractor(extraction_name),
+        extractor || attribute_extractor(name: extraction_name, callback: callback, &block),
         serializer
       )
     end
@@ -78,8 +82,7 @@ module Porridge
     end
 
     def attribute_field_serializer(name, callback = nil, extraction_name: nil, &block)
-      extractor = custom_extractor(callback || block) || from_name_extractor(extraction_name || name)
-      field_serializer(name, extractor)
+      field_serializer(name, attribute_extractor(name: extraction_name || name, callback: callback, &block))
     end
 
     def attributes_field_serializer(*names)
