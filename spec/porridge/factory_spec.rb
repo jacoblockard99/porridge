@@ -68,6 +68,32 @@ describe Porridge::Factory do
     end
   end
 
+  describe '#attribute_extractor' do
+    context 'when given only name' do
+      let(:result) { instance.attribute_extractor(name: :length) }
+
+      it 'returns an extractor that sends a method to the object' do
+        expect(result.call('abcde', {})).to eq 5
+      end
+    end
+
+    context 'when given a callback' do
+      let(:result) { instance.attribute_extractor(callback: proc { |obj| obj.reverse }) }
+
+      it 'returns a serializer that adds a field via calling the callback' do
+        expect(result.call('abc', {})).to eq 'cba'
+      end
+    end
+
+    context 'when given a block' do
+      let(:result) { instance.attribute_extractor { |obj, _opts| obj.reverse } }
+
+      it 'returns a serializer that adds a field via calling the block' do
+        expect(result.call('abc', {})).to eq 'cba'
+      end
+    end
+  end
+
   shared_examples_for '#association_extractor' do
     let(:serializer) { proc { |obj| obj } }
 
