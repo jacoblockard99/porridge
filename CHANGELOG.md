@@ -3,6 +3,7 @@
 ### Added
 
 - Added `Factory#attributes_field_serializer` to allow easy definition of multiple attributes at a time in serializer definition classes.
+- Added `Factory#attribute_field_extractor` to simplify using either a `custom_extraction` or a `from_name_extractor`.
 
 ### Fixed
 
