@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Added
+
+- Added `Factory#attributes_field_serializer` to allow easy definition of multiple attributes at a time in serializer definition classes.
+
 ### Fixed
 
 - Fixed bug where method alises in `Factory` were not respecting an overriden "source" method.
