@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Fixed
+
+- Fixed bug where method alises in `Factory` were not respecting an overriden "source" method.
+
 ## [0.2.1] - 2022-01-19
 
 ### Changed
