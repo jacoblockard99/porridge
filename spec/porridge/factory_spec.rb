@@ -2,6 +2,24 @@
 
 require 'spec_helper'
 
+class FactoryOverridingAliasSource < Porridge::Factory
+  def association_extractor(...)
+    'expected'
+  end
+
+  def association_field_serializer(...)
+    'expected'
+  end
+
+  def chain_serializer(...)
+    'expected'
+  end
+
+  def for_extracted_serializer(...)
+    'expected'
+  end
+end
+
 describe Porridge::Factory do
   let(:instance) { described_class.new }
 
@@ -102,6 +120,14 @@ describe Porridge::Factory do
     end
 
     it_behaves_like '#association_extractor'
+
+    context 'when #association_extraction is overriden' do
+      let(:instance) { FactoryOverridingAliasSource.new }
+
+      it 'uses the override' do
+        expect(instance.belongs_to_extractor).to eq 'expected'
+      end
+    end
   end
 
   describe '#has_many_extractor' do
@@ -110,6 +136,14 @@ describe Porridge::Factory do
     end
 
     it_behaves_like '#association_extractor'
+
+    context 'when #association_extraction is overriden' do
+      let(:instance) { FactoryOverridingAliasSource.new }
+
+      it 'uses the override' do
+        expect(instance.has_many_extractor).to eq 'expected'
+      end
+    end
   end
 
   describe '#serializer' do
@@ -183,6 +217,14 @@ describe Porridge::Factory do
       end
 
       it_behaves_like '#chain_serializer'
+
+      context 'when #chain_serializer is overriden' do
+        let(:instance) { FactoryOverridingAliasSource.new }
+
+        it 'uses the override' do
+          expect(instance.serializers).to eq 'expected'
+        end
+      end
     end
 
     shared_examples_for '#for_extracted_serializer' do
@@ -209,6 +251,14 @@ describe Porridge::Factory do
       end
 
       it_behaves_like '#for_extracted_serializer'
+
+      context 'when #for_extracted_serializer is overriden' do
+        let(:instance) { FactoryOverridingAliasSource.new }
+
+        it 'uses the override' do
+          expect(instance.serializer_for_extracted).to eq 'expected'
+        end
+      end
     end
 
     describe '#field_serializer' do
@@ -290,6 +340,14 @@ describe Porridge::Factory do
       end
 
       it_behaves_like '#association_field_serializer'
+
+      context 'when #association_field_serializer is overriden' do
+        let(:instance) { FactoryOverridingAliasSource.new }
+
+        it 'uses the override' do
+          expect(instance.belongs_to_field_serializer).to eq 'expected'
+        end
+      end
     end
 
     describe '#has_many_field_serializer' do
@@ -298,6 +356,14 @@ describe Porridge::Factory do
       end
 
       it_behaves_like '#association_field_serializer'
+
+      context 'when #association_field_serializer is overriden' do
+        let(:instance) { FactoryOverridingAliasSource.new }
+
+        it 'uses the override' do
+          expect(instance.has_many_field_serializer).to eq 'expected'
+        end
+      end
     end
   end
 end

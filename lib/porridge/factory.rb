@@ -41,8 +41,14 @@ module Porridge
         serializer
       )
     end
-    alias belongs_to_extractor association_extractor
-    alias has_many_extractor association_extractor
+
+    def belongs_to_extractor(...)
+      association_extractor(...)
+    end
+
+    def has_many_extractor(...) # rubocop:disable Naming/PredicateName
+      association_extractor(...)
+    end
 
     def serializer(base)
       return nil if base.nil?
@@ -54,12 +60,18 @@ module Porridge
     def chain_serializer(*bases)
       serializer ChainSerializer.new(*bases)
     end
-    alias serializers chain_serializer
+
+    def serializers(...)
+      chain_serializer(...)
+    end
 
     def for_extracted_serializer(serializer, extractor)
       serializer SerializerForExtracted.new(serializer, extractor)
     end
-    alias serializer_for_extracted for_extracted_serializer
+
+    def serializer_for_extracted(...)
+      for_extracted_serializer(...)
+    end
 
     def field_serializer(name, extractor)
       serializer FieldSerializer.new(name, extractor)
@@ -74,7 +86,13 @@ module Porridge
       options[:extraction_name] ||= name
       field_serializer(name, association_extractor(**options, &block))
     end
-    alias belongs_to_field_serializer association_field_serializer
-    alias has_many_field_serializer association_field_serializer
+
+    def belongs_to_field_serializer(...)
+      association_field_serializer(...)
+    end
+
+    def has_many_field_serializer(...) # rubocop:disable Naming/PredicateName
+      association_field_serializer(...)
+    end
   end
 end
