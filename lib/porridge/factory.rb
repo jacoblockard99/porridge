@@ -46,7 +46,7 @@ module Porridge
       association_extractor(...)
     end
 
-    def has_many_extractor(...)
+    def has_many_extractor(...) # rubocop:disable Naming/PredicateName
       association_extractor(...)
     end
 
@@ -91,7 +91,7 @@ module Porridge
       association_field_serializer(...)
     end
 
-    def has_many_field_serializer(...)
+    def has_many_field_serializer(...) # rubocop:disable Naming/PredicateName
       association_field_serializer(...)
     end
   end
