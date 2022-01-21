@@ -8,6 +8,7 @@
 ### Fixed
 
 - Fixed bug where method alises in `Factory` were not respecting an overriden "source" method.
+- Fixed bug where `ArraySerializer` counted hashes as arrays.
 
 ## [0.2.2] - 2022-01-19
 

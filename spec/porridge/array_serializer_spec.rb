@@ -32,6 +32,15 @@ describe Porridge::ArraySerializer do
       end
     end
 
+    context 'when given a hash' do
+      let(:instance) { described_class.new(proc { |obj| obj }) }
+      let(:result) { instance.call({ initial: true }, {}, {}) }
+
+      it 'does not treat it as an array' do
+        expect(result).to eq({ initial: true })
+      end
+    end
+
     context 'when given an array' do
       let(:result) { instance.call([Object.new, Object.new, Object.new], 5, {}) }
 
