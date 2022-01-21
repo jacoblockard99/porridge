@@ -43,7 +43,7 @@ module Porridge
     # @param object the object to check.
     # @return [Boolean] +true+ if the given object functions like an array; +false+ if otherwise.
     def array?(object)
-      object.respond_to? :map
+      object.is_a? Array
     end
 
     private
