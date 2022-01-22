@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [0.3.0] - 2022-01-21
+
 ### Added
 
 - Added `Factory#attributes_field_serializer` to allow easy definition of multiple attributes at a time in serializer definition classes.
@@ -8,7 +10,7 @@
 ### Fixed
 
 - Fixed bug where method alises in `Factory` were not respecting an overriden "source" method.
-- Fixed bug where `ArraySerializer` counted hashes as arrays.
+- Fixed bug where `ArraySerializer` counted hashes as arrays. Note that `ArraySerializer` **no longer counts `ActiveRecord::Relation` instances as arrays.** You must subclass `ArraySerializer` to attain this functionality.
 
 ## [0.2.2] - 2022-01-19
 
