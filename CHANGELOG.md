@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+## [0.3.1] - 2022-05-04
+
+### Fixed
+
+- Fixed bug where keyword arguments were not getting passed correctly through `SerializerDefiner` into `Factory`, resulting in certain method options raising errors.
+
 ## [0.3.0] - 2022-01-21
 
 ### Added
