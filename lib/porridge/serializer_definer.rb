@@ -18,17 +18,16 @@ module Porridge
       @serializers = []
     end
 
-    def method_missing(method_name, *args, &block)
+    def method_missing(method_name, *args, **kwargs, &block)
       method_name = method_name.to_s
-      return factory.send(method_name.delete_prefix(FACTORY_PREFIX), *args, &block) if create_method? method_name
-
-      if serializer_method? method_name
-        return add_serializer(factory.send(method_name + SERIALIZER_SUFFIX, *args, &block))
+      if create_method? method_name
+        return factory.send(method_name.delete_prefix(FACTORY_PREFIX), *args, **kwargs, &block)
       end
 
-      if field_serializer_method? method_name
-        return add_serializer(factory.send(method_name + FIELD_SERIALIZER_SUFFIX, *args, &block))
-      end
+      to_send = SERIALIZER_SUFFIX if serializer_method? method_name
+      to_send = FIELD_SERIALIZER_SUFFIX if field_serializer_method? method_name
+
+      return add_serializer(factory.send(method_name + to_send, *args, **kwargs, &block)) if to_send
 
       super(method_name.to_sym, *args, &block)
     end
