@@ -100,6 +100,17 @@ shared_examples_for 'SerializerDefiner' do
         expect(instance.added_serializers.first).to be_a Porridge::FieldSerializer
       end
     end
+
+    context 'when called with keyword arguments' do
+      before { instance.attribute(:name, extraction_name: :length) }
+
+      it 'produces an appropriate serializer', :aggregate_failures do
+        policy = Porridge::FieldPolicy.new
+        expect(instance.added_serializers.first.call('abc', {}, field_policy: policy)).to eq({
+          name: 3
+        })
+      end
+    end
   end
 
   describe '#defined_serializer' do
